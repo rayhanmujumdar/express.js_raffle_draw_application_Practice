@@ -90,8 +90,23 @@ class MyDB {
         return result
     }
     //draw
-    draw(){
-
+    /**
+     * @param {number} winnerCount
+     * @returns {Array<winnerArr>}
+     */
+    draw(winnerCount){
+        let winnerArr = new Array(winnerCount || 3)
+        let count = 0
+        let randomIndex = Math.floor(Math.random() * this.tickets.length)
+        while(count < winnerArr.length){
+            if(!winnerArr.includes(this.tickets[randomIndex])){
+                winnerArr[count++] = this.tickets[randomIndex]
+            }else{
+                randomIndex = Math.floor(Math.random() * this.tickets.length)
+            }
+        }
+        // const winner = winnerArr.map(winner => this.tickets[winner])
+        return winnerArr
     }
 }
 
