@@ -1,3 +1,3 @@
 const myDb = require('../db/myDb')
-myDb.create('rayhan',10)
-console.log(myDb.ticket)
+myDb.bulkCreate('rayhan',10,5)
+console.log(myDb.find())
