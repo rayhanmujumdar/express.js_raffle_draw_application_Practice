@@ -10,6 +10,7 @@ app.use(middleware)
 //error
 app.use(notFoundHandler)
 app.use(errorHandler)
+
 //router
 app.use(require('../routes/healthRoutes'))
 
