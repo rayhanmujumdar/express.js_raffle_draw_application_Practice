@@ -35,7 +35,7 @@ future added: frontend work to full fill this section.
 - /tickets - GET - find all ticket
 - /tickets/sell - POST - create a new ticket
 - /tickets/bulk - POST - create multiply tickets
-- /tickets/draw (or add → ) ?wc={number} - GET - raffle draw to all tickets and return result
+- /tickets/draw (or add query → ) ?wc={number} - GET - raffle draw to all tickets and return result
 
 **Technology install:**
 
