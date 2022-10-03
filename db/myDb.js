@@ -56,7 +56,7 @@ class MyDB {
      */
     findByUser(username){
         const ticket = this.tickets.find(ticket => {
-            return ticket.username === username
+            return ticket.username.includes(username)
         })
         return ticket
     }
@@ -95,7 +95,7 @@ class MyDB {
      * @returns {Array<winnerArr>}
      */
     draw(winnerCount){
-        let winnerArr = new Array(winnerCount || 3)
+        let winnerArr = new Array(winnerCount)
         let count = 0
         let randomIndex = Math.floor(Math.random() * this.tickets.length)
         while(count < winnerArr.length){

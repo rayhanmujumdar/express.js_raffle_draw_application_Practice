@@ -9,7 +9,8 @@ status.route('/t/:ticketId')
     })
     .patch((req,res) => {
         const {ticketId} = req.params
-        const updateTicket = myDb.updateById(ticketId)
+        const ticketBody = req.body
+        const updateTicket = myDb.updateById(ticketId,ticketBody)
         res.status(201).json({
             message: 'update successful',
             updateTicket
@@ -41,7 +42,7 @@ status.post('/bulk',(req,res) => {
     res.status(201).json(bulkTicket)
 })
 status.get('/draw',(req,res) => {
-    const winnerCount = req.query.wc
+    const winnerCount = req.query.wc || 3
     const winner = myDb.draw(winnerCount)
     res.status(200).json(winner)
 })
