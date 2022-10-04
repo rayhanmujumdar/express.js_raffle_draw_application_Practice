@@ -28,8 +28,25 @@ status.route('/u/:username')
         const ticket = myDb.findByUser(username)
         res.status(200).json(ticket)
     })
-    .patch(() => {})
-    .delete(() => {})
+    .patch((req,res) => {
+        const ticketBody = req.body
+        const {username} = req.params
+        const updateTicketByUser = myDb.updateAllByUser(username,ticketBody)
+        res.status(201).json(updateTicketByUser)
+    })
+    .delete((req,res) => {
+        const {username} = req.params
+        const deleteByUser = myDb.deleteByUser(username)
+        if(deleteByUser){
+            res.status(200).json({
+                message: "delete successfully"
+            })
+        }else{
+            res.status(404).json({
+                message: 'Not Match username'
+            })
+        }
+    })
 
 status.post('/sell',(req,res) => {
     const {username,price} = req.body
